@@ -1,15 +1,9 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.chrome.options import Options
 
 class TestPersonalArea:
-    def test_logged_in_user_logout_successful(self, user_credentials):
-        options = Options()
-        options.add_argument('--window-size=1024,768')
-        driver = webdriver.Chrome(options=options)
-        driver.get("https://stellarburgers.nomoreparties.site/")
+    def test_logged_in_user_logout_successful(self, driver, user_credentials):
 
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//*[contains(@class, 'button_button_size_large')]")))
         driver.find_element(By.XPATH, ".//*[contains(@class, 'button_button_size_large')]").click()
